@@ -1,7 +1,17 @@
+import { useDispatch } from 'react-redux';
 import { ContactForm, ContactList, Filter } from '../index';
 import { AppContainer } from './App.styled';
+import { useEffect } from 'react';
+import { fetchContacts } from 'redux/operations';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('useEffect');
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
     <AppContainer>
       <h1>phonebook</h1>
