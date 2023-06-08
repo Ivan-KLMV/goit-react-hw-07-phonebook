@@ -7,6 +7,7 @@ export const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
+  console.log('log ContactList', contacts);
 
   const handleFilterContact = () => {
     const filterToLowerCase = filter.toLowerCase();
@@ -17,7 +18,7 @@ export const ContactList = () => {
   };
 
   const visibleContacts = handleFilterContact();
-
+  // const visibleContacts = contacts;
   const handleDelete = id => dispatch(deleteContact(id));
 
   return (
