@@ -1,13 +1,14 @@
 import { ContactListStyled } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, getContacts } from 'redux/contactListSlice';
+import { getContacts, getIsLoading } from 'redux/contactListSlice';
 import { getFilter } from 'redux/contactsFilterSlice';
+import { deleteContact } from 'redux/operations';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
-  console.log('log ContactList', contacts);
+  const isLoading = useSelector(getIsLoading);
 
   const handleFilterContact = () => {
     const filterToLowerCase = filter.toLowerCase();
@@ -18,7 +19,6 @@ export const ContactList = () => {
   };
 
   const visibleContacts = handleFilterContact();
-  // const visibleContacts = contacts;
   const handleDelete = id => dispatch(deleteContact(id));
 
   return (
@@ -27,7 +27,7 @@ export const ContactList = () => {
         <li key={contact.id}>
           {contact.name}:<span>{contact.number}</span>
           <button
-            id={contact.id}
+            className={isLoading ? 'isLoading' : undefined}
             type="button"
             onClick={() => handleDelete(contact.id)}
           >
