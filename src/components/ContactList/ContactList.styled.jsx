@@ -42,6 +42,31 @@ export const ContactListStyled = styled.ul`
 
     font-weight: 500;
 
+    &.isLoading {
+      background-color: #e5e5f7;
+      opacity: 0.7;
+      background: repeating-linear-gradient(
+        -45deg,
+        #969696,
+        #969696 10px,
+        white 8px,
+        white 20px
+      );
+      background-size: 400% 400%;
+      animation: AnimationName 5s linear infinite;
+      @keyframes AnimationName {
+        0% {
+          background-position: 100%;
+        }
+        50% {
+          background-position: 50%;
+        }
+        100% {
+          background-position: 0%;
+        }
+      }
+    }
+
     &:hover {
       cursor: pointer;
     }
