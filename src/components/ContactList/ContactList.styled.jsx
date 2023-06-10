@@ -75,9 +75,4 @@ export const ContactListStyled = styled.ul`
       background-color: whitesmoke;
     }
   }
-
-  & > li > span {
-    /* margin-left: 5px;
-    margin-right: 15px; */
-  }
 `;
