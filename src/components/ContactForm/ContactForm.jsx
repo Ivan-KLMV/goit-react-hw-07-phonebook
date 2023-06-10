@@ -1,9 +1,11 @@
 import { FormStyled } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, getContacts } from 'redux/contactListSlice';
-import { nanoid } from '@reduxjs/toolkit';
+import { getContacts } from 'redux/contactListSlice';
+import { addContact } from 'redux/operations';
+import { getAddIsLoading } from 'redux/contactListSlice';
 
 export const ContactForm = () => {
+  const isLoading = useSelector(getAddIsLoading);
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
@@ -11,7 +13,6 @@ export const ContactForm = () => {
     e.preventDefault();
 
     const contact = {
-      id: nanoid(),
       name: e.target[0].value,
       number: e.target[1].value,
     };
@@ -46,7 +47,9 @@ export const ContactForm = () => {
           required
         />
       </label>
-      <button type="submit">add contact</button>
+      <button className={isLoading ? 'addIsLoading' : undefined} type="submit">
+        add contact
+      </button>
     </FormStyled>
   );
 };
