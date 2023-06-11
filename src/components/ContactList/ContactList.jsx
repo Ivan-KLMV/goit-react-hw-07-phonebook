@@ -20,9 +20,12 @@ export const ContactList = () => {
 
   return (
     <ContactListStyled>
-      {visibleContacts.map(contact => (
-        <Contact key={contact.id} contact={contact} />
-      ))}
+      {contacts.length > 0 &&
+        (visibleContacts.length > 0
+          ? visibleContacts.map(contact => (
+              <Contact key={contact.id} contact={contact} />
+            ))
+          : 'No matches found')}
     </ContactListStyled>
   );
 };
