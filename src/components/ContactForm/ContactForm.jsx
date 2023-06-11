@@ -1,13 +1,12 @@
 import { FormStyled } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/contactListSlice';
 import { addContact } from 'redux/operations';
-import { getAddIsLoading } from 'redux/contactListSlice';
+import { getAddIsLoading, getContacts } from 'redux/contactListSlice';
 
 export const ContactForm = () => {
   const isLoading = useSelector(getAddIsLoading);
-  const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
