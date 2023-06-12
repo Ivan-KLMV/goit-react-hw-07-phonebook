@@ -20,7 +20,6 @@ export const ContactList = () => {
   const visibleContacts = handleFilterContact().sort((a, b) =>
     a.name.localeCompare(b.name)
   );
-  console.log(visibleContacts);
 
   const noContacts = contacts.length === 0;
   const isContacts = contacts.length > 0;
