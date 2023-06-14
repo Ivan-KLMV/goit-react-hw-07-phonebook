@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getIsLoading } from 'redux/contactListSlice';
+import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 
 export const Contact = ({ contact }) => {
-  const isLoading = useSelector(getIsLoading);
   const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
   const handleDelete = id => dispatch(deleteContact(id));
@@ -13,8 +11,9 @@ export const Contact = ({ contact }) => {
     <li>
       {contact.name}:<span>{contact.number}</span>
       <button
-        className={isLoading & isActive ? 'isLoading' : undefined}
+        className={isActive ? 'isLoading' : undefined}
         type="button"
+        disabled={isActive}
         onClick={() => {
           setIsActive(true);
           handleDelete(contact.id);
