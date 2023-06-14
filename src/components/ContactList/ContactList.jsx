@@ -28,15 +28,6 @@ export const ContactList = () => {
 
   return (
     <ContactListStyled>
-      {/* {isLoading && noContacts
-        ? 'Loading...'
-        : isContacts
-        ? isVisibleContacts
-          ? visibleContacts.map(contact => (
-              <Contact key={contact.id} contact={contact} />
-            ))
-          : 'No matches found'
-        : 'Contacts list is empty'} */}
       {isLoading && noContacts
         ? 'Loading...'
         : isContactsTrue
