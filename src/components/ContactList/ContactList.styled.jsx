@@ -74,5 +74,12 @@ export const ContactListStyled = styled.ul`
       box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.0384313725);
       background-color: whitesmoke;
     }
+
+    &:disabled {
+      opacity: 0.5;
+      background-color: white;
+      box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.1215686275),
+        0px 1px 2px 0px rgba(0, 0, 0, 0.0784313725);
+    }
   }
 `;
