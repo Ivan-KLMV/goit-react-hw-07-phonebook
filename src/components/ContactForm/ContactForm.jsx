@@ -1,11 +1,11 @@
 import { FormStyled } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
-import { getAddIsLoading, getContacts } from 'redux/contactListSlice';
+import { selectAddIsLoading, selectContacts } from 'redux/contactListSlice';
 
 export const ContactForm = () => {
-  const isLoading = useSelector(getAddIsLoading);
-  const contacts = useSelector(getContacts);
+  const isLoading = useSelector(selectAddIsLoading);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -46,7 +46,11 @@ export const ContactForm = () => {
           required
         />
       </label>
-      <button className={isLoading ? 'addIsLoading' : undefined} type="submit">
+      <button
+        className={isLoading ? 'addIsLoading' : undefined}
+        disabled={isLoading}
+        type="submit"
+      >
         add contact
       </button>
     </FormStyled>

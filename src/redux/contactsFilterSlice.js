@@ -10,6 +10,6 @@ const contactsFilterSlice = createSlice({
   },
 });
 
-export const getFilter = state => state.filter;
+export const selectFilter = state => state.filter;
 export const contactsFilter = contactsFilterSlice.reducer;
 export const { filterContacts } = contactsFilterSlice.actions;

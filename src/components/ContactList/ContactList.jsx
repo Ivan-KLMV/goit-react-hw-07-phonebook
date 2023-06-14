@@ -1,13 +1,13 @@
 import { ContactListStyled } from './ContactList.styled';
 import { useSelector } from 'react-redux';
-import { getContacts, getIsLoading } from 'redux/contactListSlice';
-import { getFilter } from 'redux/contactsFilterSlice';
+import { selectContacts, selectIsLoading } from 'redux/contactListSlice';
+import { selectFilter } from 'redux/contactsFilterSlice';
 import { Contact } from 'components/Contact';
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const isLoading = useSelector(getIsLoading);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
+  const isLoading = useSelector(selectIsLoading);
 
   const handleFilterContact = () => {
     const filterToLowerCase = filter.toLowerCase();
@@ -22,15 +22,25 @@ export const ContactList = () => {
   );
 
   const noContacts = contacts.length === 0;
-  const isContacts = contacts.length > 0;
-  const isVisibleContacts = visibleContacts.length > 0;
+  const isContactsTrue = contacts.length > 0;
+  const isVisibleContactsTrue = visibleContacts.length > 0;
+  console.log('visibleContacts', visibleContacts);
 
   return (
     <ContactListStyled>
-      {isLoading && noContacts
+      {/* {isLoading && noContacts
         ? 'Loading...'
         : isContacts
         ? isVisibleContacts
+          ? visibleContacts.map(contact => (
+              <Contact key={contact.id} contact={contact} />
+            ))
+          : 'No matches found'
+        : 'Contacts list is empty'} */}
+      {isLoading && noContacts
+        ? 'Loading...'
+        : isContactsTrue
+        ? isVisibleContactsTrue
           ? visibleContacts.map(contact => (
               <Contact key={contact.id} contact={contact} />
             ))
