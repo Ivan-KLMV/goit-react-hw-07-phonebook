@@ -24,7 +24,6 @@ export const ContactList = () => {
   const noContacts = contacts.length === 0;
   const isContactsTrue = contacts.length > 0;
   const isVisibleContactsTrue = visibleContacts.length > 0;
-  console.log('visibleContacts', visibleContacts);
 
   return (
     <ContactListStyled>
